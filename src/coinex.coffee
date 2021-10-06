@@ -184,6 +184,10 @@ class Coinex extends Property
         v.frozen = parseFloat v.frozen
       data
 
+  depositList: ->
+    @getAuth 'balance/coin/deposit', {}
+    .then (data) => 
+      data
   ##################################################################
   ## Trading API
   ##################################################################
