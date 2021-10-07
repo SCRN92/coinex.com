@@ -195,6 +195,15 @@ class Coinex extends Property
     @getAuth 'balance/coin/deposit', params
     .then (data) => 
       data
+
+  depositList: (pair,txid) ->
+    params = 
+      coin_type: pair
+    @getAuth 'balance/coin/deposit', params
+    .then (data) => 
+      for item in data.data
+        if item.tx_id is txid then result = item
+      return result
   ##################################################################
   ## Trading API
   ##################################################################
