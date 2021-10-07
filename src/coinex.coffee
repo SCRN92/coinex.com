@@ -189,12 +189,12 @@ class Coinex extends Property
     .then (data) => 
       data
   
-  depositList: (pair)->
-  params = 
-    coin_type: pair
-  @getAuth 'balance/coin/deposit', params
-  .then (data) => 
-    data
+  depositList: (pair) ->
+    params = 
+      coin_type: pair
+    @getAuth 'balance/coin/deposit', params
+    .then (data) => 
+      data
   ##################################################################
   ## Trading API
   ##################################################################
