@@ -196,11 +196,15 @@ class Coinex extends Property
     .then (data) => 
       data
 
-  depositList: (pair,txid) ->
+  depositList: (pair,txid = '',page = 1, limit = 100, orderStatus = 'FINISHED') ->
     params = 
-      coin_type: pair
+      coin_type: pair,
+      status: orderStatus,
+      page: page,
+      Limit: limit
     @getAuth 'balance/coin/deposit', params
     .then (data) => 
+      if txid is '' then return data
       for item in data.data
         if item.tx_id is txid then result = item
       return result
